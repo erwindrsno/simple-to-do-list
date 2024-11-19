@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/htmx.org@2.0.3" integrity="sha384-0895/pl2MU10Hqc6jd4RvrthNlDiE9U1tWmX7WRESftEDRosgxNsQG/Ze9YMRzHq" crossorigin="anonymous"></script>
+    <title>To do list</title>
+</head>
+<body>
+    <h1>To do list</h1>
+    <div hx-get="todos" hx-target="#lists" hx-trigger="load">
+        <ol id="lists">
+            
+        </ol>
+    </div>
+    <!-- <div>
+        <ol id="lists">
+            <li hx-post='/mark/1' hx-trigger='click'>List pertama</li>
+        </ol>
+    </div> -->
+    <form hx-post="/add" hx-trigger="submit" hx-target="#lists">
+        <input type="text" name="task" placeholder="Task" required>
+        <input type="submit" value="Submit">
+    </form>
+    <br>
+    <form hx-post="/delete" hx-trigger="submit" hx-target="#lists">
+        <input type="text" name="num" placeholder="e.g : 1" required>
+        <input type="submit" value="Delete">
+    </form>
+</body>
+</html>
